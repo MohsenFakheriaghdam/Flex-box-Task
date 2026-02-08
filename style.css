@@ -1,42 +1,122 @@
+:root {
+	/* ================= COLORS ================= */
+
+	--color-body-bg: #f3f4f6;
+
+	--color-surface-primary: #ffffff;
+	--color-surface-secondary: #fff4f8;
+
+	--color-text-primary: brown;
+	--color-text-secondary: #606060;
+	--color-text-white: #ffffff;
+
+	--color-danger: red;
+
+	--color-badge-bg: #00000033;
+	--color-badge-hover-bg: #ffffff;
+
+	/* ================= TYPOGRAPHY ================= */
+
+	--font-family-base: Vazirmatn, sans-serif;
+
+	--font-weight-normal: 400;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+
+	--font-size-root: 62.5%;
+
+	--font-size-xs: 1.2rem;
+	--font-size-sm: 1.4rem;
+	--font-size-md: 1.6rem;
+	--font-size-lg: 2rem;
+
+	/* ================= SPACING ================= */
+
+	--space-xxs: 4px;
+	--space-xs: 5px;
+	--space-sm: 8px;
+	--space-md: 10px;
+	--space-lg: 15px;
+	--space-xl: 18px;
+	--space-2xl: 24px;
+	--space-3xl: 28px;
+	--space-4xl: 40px;
+
+	/* ================= SIZE ================= */
+
+	--container-min-width: 320px;
+	--container-max-width: 1440px;
+
+	--header-height: 50px;
+	--footer-height: 50px;
+	--main-header-height: 40px;
+
+	--product-max-width: 300px;
+	--product-height: 400px;
+	--product-image-height: 240px;
+
+	--badge-dot-size: 8px;
+
+	/* ================= RADIUS ================= */
+
+	--radius-sm: 8px;
+	--radius-md: 16px;
+	--radius-lg: 20px;
+	--radius-xl: 24px;
+	--radius-pill: 30px;
+	--radius-circle: 100%;
+
+	/* ================= EFFECTS ================= */
+
+	--blur-badge: 25px;
+
+	/* ================= BREAKPOINTS ================= */
+
+	--bp-sm: 640px;
+	--bp-md: 1024px;
+	--bp-lg: 1300px;
+}
+
+/* ================= RESET ================= */
+
 *,
-*::after,
-*::before {
+*::before,
+*::after {
 	margin: 0;
 	padding: 0;
-	list-style: none;
 	box-sizing: border-box;
-	font-family: Vazirmatn, sans-serif;
-	font-weight: normal;
+	list-style: none;
 	text-decoration: none;
+	font-family: var(--font-family-base);
+	font-weight: var(--font-weight-normal);
 }
 
 html {
-	font-size: 62.5%;
+	font-size: var(--font-size-root);
 }
 
 body {
-	background-color: #f3f4f6;
+	background-color: var(--color-body-bg);
 }
 
 .cursor-pointer {
 	cursor: pointer;
 }
 
-/** ______________ Main styles ______________ **/
+/* ================= LAYOUT ================= */
 
-/*! ______________ container ______________ */
 .container {
-	min-width: 320px;
-	max-width: 1440px;
-	height: 100vh;
-	margin: 0 auto;
-	padding: 10px;
-
-	gap: 5px;
-
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: auto 1fr auto;
+	gap: var(--space-xs);
+
+	min-width: var(--container-min-width);
+	max-width: var(--container-max-width);
+	height: 100vh;
+
+	margin: 0 auto;
+	padding: var(--space-md);
 }
 
 .flex-center {
@@ -45,77 +125,78 @@ body {
 	justify-content: center;
 }
 
-/** ______________  ______________**/
+/* ================= HEADER ================= */
 
 #header {
 	width: 100%;
-	height: 50px;
-	background-color: white;
-	border-radius: 8px;
+	height: var(--header-height);
+	background-color: var(--color-surface-primary);
+	border-radius: var(--radius-sm);
 }
 
 #header h1 {
-	color: brown;
+	color: var(--color-text-primary);
 }
+
+/* ================= MAIN ================= */
 
 #main {
 	width: 100%;
 	height: 100%;
-
 	display: grid;
 	grid-template-columns: 1fr;
+	border-radius: var(--radius-lg);
 	grid-template-rows: auto 1fr auto;
-
-	background-color: #fff4f8;
-
-	padding: 10px;
+	padding: var(--space-3xl) var(--space-2xl);
+	background-color: var(--color-surface-secondary);
 }
 
 .main-header {
-	height: 40px;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	flex-direction: column;
-	margin-bottom: 40px;
+	height: var(--main-header-height);
+	margin-bottom: var(--space-4xl);
 }
 
 .main-header span {
-	font-weight: bold;
-	font-size: 1.6rem;
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-bold);
 }
 
 .main-header :first-child span {
-	color: brown;
+	color: var(--color-text-primary);
 }
 
+/* ================= PRODUCT LIST ================= */
+
 .product-list {
-	gap: 10px;
+	gap: var(--space-md);
 	display: grid;
 	justify-items: center;
 	grid-template-columns: 1fr;
-	grid-template-rows: auto;
 }
 
-.product {
-	width: 100%;
-	padding: 15px;
-	height: 400px;
-	max-width: 300px;
-	border-radius: 24px;
-	background-color: #fff;
+/* ================= PRODUCT CARD ================= */
 
+.product {
 	display: grid;
 	grid-template-rows: auto 1fr auto;
+	width: 100%;
+	max-width: var(--product-max-width);
+	height: var(--product-height);
+	padding: var(--space-lg);
+	background-color: var(--color-surface-primary);
+	border-radius: var(--radius-xl);
 }
 
 #product__img {
 	width: 100%;
-	height: 240px;
-
+	height: var(--product-image-height);
 	object-fit: cover;
-	border-radius: 16px;
 	object-position: center;
+	border-radius: var(--radius-md);
 }
 
 .product__header {
@@ -123,96 +204,94 @@ body {
 }
 
 .product__body {
-	gap: 8px;
 	display: flex;
 	flex-direction: column;
+	gap: var(--space-sm);
 }
 
 .product__body--title {
-	font-size: 16px;
-	font-weight: 600;
+	font-size: var(--font-size-md);
+	font-weight: var(--font-weight-semibold);
 }
 
 .product__body--discription {
-	font-size: 1.2rem;
-	color: #606060;
+	font-size: var(--font-size-xs);
+	color: var(--color-text-secondary);
 }
 
+/* ================= BADGE ================= */
+
 .product__badg {
-	position: absolute;
-	right: 10px;
-	top: 10px;
-
-	gap: 4px;
-
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: row-reverse;
+	position: absolute;
+	top: var(--space-md);
+	gap: var(--space-xxs);
+	right: var(--space-md);
 }
 
 .product__badg p {
-	padding: 6px 18px;
-	font-weight: bold;
-	border-radius: 30px;
-	color: white;
-	backdrop-filter: blur(25px);
-	background: #00000033;
-	font-size: 1.2rem;
+	padding: 6px var(--space-xl);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-bold);
+	color: var(--color-text-white);
+	background: var(--color-badge-bg);
+	backdrop-filter: blur(var(--blur-badge));
+	border-radius: var(--radius-pill);
 }
 
 .product__badg p:hover {
-	background: white;
+	background: var(--color-badge-hover-bg);
 }
 
 .product__badg span {
-	width: 8px;
-	height: 8px;
-	border-radius: 100%;
-	display: inline-block;
-	background-color: red;
+	width: var(--badge-dot-size);
+	height: var(--badge-dot-size);
+	background-color: var(--color-danger);
+	border-radius: var(--radius-circle);
 }
 
+/* ================= PRODUCT FOOTER ================= */
+
 .product__footer {
-	height: 40px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	height: var(--main-header-height);
 }
 
 .product__footer--date span {
-	font-size: 1.4rem;
-	color: #606060;
+	font-size: var(--font-size-sm);
+	color: var(--color-text-secondary);
 }
 
 .product__footer--info {
-	gap: 8px;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	gap: var(--space-sm);
 }
 
 .product__footer--info span {
-	font-size: 1.4rem;
-	color: red;
+	font-size: var(--font-size-sm);
+	color: var(--color-danger);
 	cursor: pointer;
 }
 
+/* ================= FOOTER ================= */
+
 .main-footer {
-	height: 40px;
+	height: var(--main-header-height);
 }
 
 #footer {
 	width: 100%;
-	height: 50px;
+	height: var(--footer-height);
 }
 
 #footer span {
-	font-size: 1.6rem;
-	font-weight: bold;
+	font-size: var(--font-size-md);
+	font-weight: var(--font-weight-bold);
 }
 
-/** ______________ Media ______________ **/
+/* ================= MEDIA ================= */
 
 @media screen and (max-width: 640px) {
 	.product {
