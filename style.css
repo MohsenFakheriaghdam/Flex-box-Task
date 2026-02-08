@@ -15,6 +15,8 @@
 	--color-badge-bg: #00000033;
 	--color-badge-hover-bg: #ffffff;
 
+	--border-color: #b7b7b7;
+
 	/* ================= TYPOGRAPHY ================= */
 
 	--font-family-base: Vazirmatn, sans-serif;
@@ -152,20 +154,30 @@ body {
 }
 
 .main-header {
+	gap: 10px;
+	height: 60px;
+	margin-bottom: var(--space-4xl);
+}
+
+.main-header__line {
+	width: 65px;
+	border: 1px solid var(--border-color);
+}
+
+.main-header__title {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	height: var(--main-header-height);
-	margin-bottom: var(--space-4xl);
 }
 
-.main-header span {
+.main-header__title span {
 	font-size: var(--font-size-lg);
 	font-weight: var(--font-weight-bold);
 }
 
-.main-header :first-child span {
+.main-header__title :first-child span {
 	color: var(--color-text-primary);
 }
 
@@ -224,6 +236,8 @@ body {
 .product__badg {
 	display: flex;
 	position: absolute;
+	align-items: center;
+	flex-direction: row-reverse;
 	top: var(--space-md);
 	gap: var(--space-xxs);
 	right: var(--space-md);
@@ -296,6 +310,10 @@ body {
 @media screen and (max-width: 640px) {
 	.product {
 		max-width: none;
+	}
+
+	.main-header__line {
+		display: none;
 	}
 }
 
